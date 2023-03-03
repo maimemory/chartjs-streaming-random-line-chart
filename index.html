@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChartJS Streaming Line Chart</title>
+    <title>ChartJS Line Chart</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0/dist/chartjs-plugin-streaming.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js"></script>
@@ -15,7 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Charmonman&display=swap" rel="stylesheet">
     <style>
         .myChart {
-            margin: 20px 100px;
+            margin: 20px 20px;
+        }
+
+        .chart-container {
+            height: 90vh;
+            width: 100vw;
         }
 
         body {
@@ -25,8 +30,10 @@
 </head>
 
 <body>
-    <canvas id="myChart" class="myChart"></canvas>
-
+    <div class="chart-container">
+        <canvas id="myChart" class="myChart"></canvas>
+    </div>
+    
     <script>
         // let pauseToggle = document.getElementById('myChart');
         // pauseToggle.addEventListener('click', () => {
@@ -72,7 +79,14 @@
                             color: 'rgba(255, 255, 255, 0.2)'
                         },
                         ticks: {
-                            color: 'white'
+                            color: 'white',
+                            format: {
+                                numberingSystem: 'thai'
+                            },
+                            font: {
+                                size: 20,
+                                family: 'Charmonman'
+                            }
                         }
                     },
                     x: {
@@ -121,7 +135,9 @@
                         frameRate: 30,
                         // refresh: 300
                     }
-                }
+                },
+                responsive: true,
+                maintainAspectRatio: false
             }
         };
 
